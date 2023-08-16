@@ -1,0 +1,51 @@
+/*! Trying to center the titles in navBar
+/* .navbar-nav {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+} */
+
+.body-container {
+  background-color: #f2e470;
+  margin-left: 10%;
+  margin-top: 15px;
+  height: 100vh;
+}
+
+.container-fluid {
+  background-color: #4ba762;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.navbar-brand {
+  color: #fff !important;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 20%;
+}
+footer {
+  /* position: static; */
+  display: flex;
+  flex-direction: column wrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+}
+
+p {
+  font-size: 10pt;
+}
+
+.btn-primary {
+  background-color: purple;
+}

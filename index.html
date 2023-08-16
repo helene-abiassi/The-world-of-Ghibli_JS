@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>The World of Ghibli</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand active" href="index.html">The World of Ghibli</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" aria-current="page" href="films.html">Films</a>
+            <a class="nav-link" href="people.html">People</a>
+            <a class="nav-link" href="creatures.html">Creatures</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <img
+        class="logo-icon"
+        src="./icons/studio-ghibli-logo.svg"
+        alt="Studio Ghibli logo"
+      />
+    </header>
+
+    <div class="body-container">
+      <div class="hero-header">
+        <div class="hero-image">
+          <img src="header image link" alt="alt text for the header image" />
+        </div>
+        <h1 class="hero-title">Welcome to the world of Studio Ghibli!</h1>
+        <p>
+          This is the text that will have a button with "Show more" and "Show
+          less"
+        </p>
+        <a href="">Show more</a>
+      </div>
+
+      <div class="category-container">
+        <div class="category">
+          <div class="category-films">
+            <img
+              src="Films Photo"
+              alt="photo representing the films category"
+            />
+            <h3>Films</h3>
+          </div>
+          <div class="category-characters">
+            <img
+              src="Characters Photo"
+              alt="photo representing the people category"
+            />
+            <h3>People</h3>
+          </div>
+          <div class="category-creatures">
+            <img
+              src="Creatures Photo"
+              alt="photo representing the creatures category"
+            />
+            <h3>Creatures</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Copyright Helene Abi Assi 2023</p>
+    </footer>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"
+  ></script>
+  <script src="ghibliFilms.js"></script>
+  <script src="main.js"></script>
+</html>
