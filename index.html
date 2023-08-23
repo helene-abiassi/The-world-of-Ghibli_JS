@@ -30,8 +30,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" aria-current="page" href="films.html">Films</a>
-            <a class="nav-link" href="people.html">People</a>
-            <a class="nav-link" href="creatures.html">Creatures</a>
+            <a class="nav-link" href="people.html">Characters</a>
+            <a class="nav-link" href="locations.html">Locations</a>
           </div>
         </div>
       </div>
@@ -43,57 +43,91 @@
         src="./icons/studio-ghibli-logo.svg"
         alt="Studio Ghibli logo"
       />
+      <embed
+        src="./music/ponyoLullaby.mp3"
+        loop="true"
+        autostart="true"
+        width="2"
+        height="0"
+      />
     </header>
+    <br>
 
-    <div class="body-container">
+
+    <div class="body-container" style="padding-inline-start: 5%">
       <div class="hero-header">
-        <div class="hero-image">
-          <img src="header image link" alt="alt text for the header image" />
+        <div class="hero-image"></div>
+
+        <div class="hero-text">
+          <h1 class="hero-title">
+            Welcome to the wonderful</br>world of Studio Ghibli!
+          </h1>
+          <p class="d-inline-flex gap-1">
+            <a
+              data-bs-toggle="collapse"
+              href="#collapseExample"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+              class="btn btn-primary"
+            >
+              Learn more
+            </a>
+          </p>
+          <div class="collapse" id="collapseExample" >
+            <p style="text-align: center; text-shadow: 2px 2px black">
+              Studio Ghibli was founded in 1985 by animated film directors 
+              Isao Takahata and Hayao Miyazaki, and has produced twenty-two 
+              feature-length films. Most Studio Ghibli films ranked number one 
+              at the box office in Japan in the year in which they were released. 
+              SPIRITED AWAY, directed by Hayao Miyazaki and released in 2001, is 
+              the all-time highest grossing film in Japan, earning over 30 billion 
+              yen at the box office.
+            </p>
+          </div>
         </div>
-        <h1 class="hero-title">Welcome to the world of Studio Ghibli!</h1>
-        <p>
-          This is the text that will have a button with "Show more" and "Show
-          less"
-        </p>
-        <a href="">Show more</a>
       </div>
+
+      <br>
 
       <div class="category-container">
-        <div class="category">
-          <div class="category-films">
-            <img
-              src="Films Photo"
-              alt="photo representing the films category"
-            />
-            <h3>Films</h3>
-          </div>
-          <div class="category-characters">
-            <img
-              src="Characters Photo"
-              alt="photo representing the people category"
-            />
-            <h3>People</h3>
-          </div>
-          <div class="category-creatures">
-            <img
-              src="Creatures Photo"
-              alt="photo representing the creatures category"
-            />
-            <h3>Creatures</h3>
+        <div class="hcontainer">
+          <img src="./icons/Films.png" alt="Avatar" class="himage" style="width:100%">
+          <div class="middle">
+            <div class="htext "><a href="films.html" style="text-decoration: none;" class="btn">Films</a></div>
           </div>
         </div>
-      </div>
-    </div>
+        
+        <div class="hcontainer">
+          <img src="./icons/Characters.png" alt="Avatar" class="himage" style="width:100%">
+          <div class="middle">
+            <div class="htext "><a href="people.html" style="text-decoration: none;" class="btn">Characters</a></div>
+          </div>
+        </div>
+        
+        <div class="hcontainer">
+          <img src="./icons/Locations.png" alt="Avatar" class="himage" style="width:100%">
+          <div class="middle">
+            <div class="htext "><a href="locations.html" style="text-decoration: none;" class="btn">Locations</a></div>
+          </div>
+        </div>
+
+        
+          </div>
+        </div>
+
+    
 
     <footer>
       <p>Copyright Helene Abi Assi 2023</p>
     </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="ghibliFilms.js"></script> -->
+    <script src="main.js"></script>
   </body>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"
-  ></script>
-  <script src="ghibliFilms.js"></script>
-  <script src="main.js"></script>
 </html>
