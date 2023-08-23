@@ -6,9 +6,10 @@ const getPeople = () => {
     })
     .then((result2) => {
       const ghibliPeople = result2;
+
       fetchSpecies(ghibliPeople);
 
-      // buildCharactersTable(ghibliPeople);
+      //   buildCharactersTable(ghibliPeople);
     });
 };
 
@@ -30,9 +31,8 @@ const fetchSpecies = (ghibliPeople) => {
           }
         }
       }
+      createRadioButtons(speciesList);
       getChFilms(ghibliPeople);
-      console.log("before we build", ghibliPeople);
-      buildCharactersTable(ghibliPeople);
     });
 };
 
@@ -43,31 +43,20 @@ const getChFilms = (ghibliPeople) => {
   fetch(chLink)
     .then((responseCh) => {
       let chList = responseCh.json();
-      // console.log(chList);
       return chList;
     })
     .then((chFilmList) => {
-      //   console.log("chFilmList", chFilmList);
-
-      // for (let i = 0; i < ghibliPeople.length; i++) {
-      //   console.log(ghibliPeople[i]);
-      // }
-
       for (let i = 0; i < ghibliPeople.length; i++) {
-        // console.log(ghibliPeople[i].films);
-
         const myChFilmIDs = [];
         for (let h = 0; h < ghibliPeople[i].films.length; h++) {
           const slicedID = ghibliPeople[i].films[h].slice(35);
 
           myChFilmIDs.push(slicedID);
         }
-        // console.log(myChFilmIDs);
         const myFilmsAfter = [];
 
-        // console.log("myChFilmID", myChFilmIDs);
         for (let j = 0; j < chFilmList.length; j++) {
-          const filmID = chFilmList[j].id; //!
+          const filmID = chFilmList[j].id;
           for (let e = 0; e < myChFilmIDs.length; e++) {
             if (myChFilmIDs[e] == filmID) {
               myFilmsAfter.push(chFilmList[j].title);
@@ -75,23 +64,17 @@ const getChFilms = (ghibliPeople) => {
           }
         }
         ghibliPeople[i].my_films = myFilmsAfter.toString();
-        // return myFilmsAfter;
 
-        // myFilmsAfterString = myFilmsAfter.toString();
-        // console.log("films After array", ghibliPeople[i].my_films);
-        // console.log(ghibliPeople[0].my_films);
+        // console.log(ghibliPeople);
       }
+      buildCharactersTable(ghibliPeople);
     });
-
-  //   buildCharactersTable(ghibliPeople);
 };
 
 function buildCharactersTable(ghibliPeople) {
-  console.log("recxeived:", ghibliPeople);
   const tableBody = document.getElementById("t-body");
   for (let i = 0; i < ghibliPeople.length; i++) {
     if (ghibliPeople[i].my_films != undefined) {
-      console.log(ghibliPeople[i].my_films);
     }
     // ROWS
     const tableRow = document.createElement("tr");
@@ -108,32 +91,57 @@ function buildCharactersTable(ghibliPeople) {
 
     const peopleSpecie = document.createElement("td");
     peopleSpecie.innerText = ghibliPeople[i].species;
+    // console.log(ghibliPeople[i].species);
 
     const peopleEye = document.createElement("td");
     peopleEye.innerText = ghibliPeople[i].eye_color;
 
     const peopleHair = document.createElement("td");
-    // const peopleHairColor = document.createElement("span");
-    // peopleHairColor.setAttribute("style", "background-color:");
     peopleHair.innerText = ghibliPeople[i].hair_color;
 
     const peopleFilm = document.createElement("td");
     peopleFilm.innerText = ghibliPeople[i].my_films;
-    // const filmImage = document.createElement("img");
-    // image.setAttribute("src", ghibliPeople[i].my_films);
-    // image.setAttribute("class", "card-image-top");
-    // peopleFilm.appendChild(filmImage);
 
     tableRow.appendChild(peopleImageRow);
-    // tableRow.appendChild(peopleImage);
     tableRow.appendChild(peopleName);
     tableRow.appendChild(peopleSpecie);
     tableRow.appendChild(peopleEye);
     tableRow.appendChild(peopleHair);
     tableRow.appendChild(peopleFilm);
 
-    // tableRow.appendChild(filmImage);
-
     tableBody.appendChild(tableRow);
   }
 }
+
+//!Function to create radio buttons
+
+function createRadioButtons(speciesList) {
+  const radioBox = document.getElementById("radioButtons");
+  //   console.log(speciesList);
+
+  for (let i = 0; i < speciesList.length; i++) {
+    const radioOptions = document.createElement("div");
+    radioOptions.setAttribute("class", "form-check");
+
+    radioBox.appendChild(radioOptions);
+
+    const inputOptions = document.createElement("input");
+    inputOptions.setAttribute("class", "form-check-input");
+    inputOptions.setAttribute("type", "radio");
+    inputOptions.setAttribute("name", "flexRadioDefault");
+    inputOptions.setAttribute("id", "flexRadioDefault1");
+    inputOptions.setAttribute("value", speciesList[i].name);
+
+    const labelOptions = document.createElement("label");
+    labelOptions.setAttribute("class", "form-check-label");
+    labelOptions.setAttribute("for", "flexRadioDefault1");
+    labelOptions.setAttribute("for", speciesList[i].name);
+    labelOptions.innerText = "\u00A0" + speciesList[i].name;
+
+    // labelOptions.appendChild(inputOptions);
+    radioBox.appendChild(inputOptions);
+    radioBox.appendChild(labelOptions);
+  }
+}
+
+// createRadioButtons();
