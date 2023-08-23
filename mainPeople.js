@@ -31,59 +31,12 @@ const fetchSpecies = (ghibliPeople) => {
         }
       }
       getChFilms(ghibliPeople);
+      console.log("before we build", ghibliPeople);
+      buildCharactersTable(ghibliPeople);
     });
 };
 
 getPeople();
-
-function buildCharactersTable(ghibliPeople) {
-  console.log(ghibliPeople);
-  const tableBody = document.getElementById("t-body");
-  for (let i = 0; i < ghibliPeople.length; i++) {
-    // ROWS
-    const tableRow = document.createElement("tr");
-    //ELEMENTS
-    const peopleImageRow = document.createElement("td");
-    peopleImageRow.setAttribute("scope", "row");
-
-    const peopleImage = document.createElement("img");
-    peopleImage.setAttribute("src", ghibliPeoplePhotos[i].photo);
-    peopleImageRow.appendChild(peopleImage);
-
-    const peopleName = document.createElement("td");
-    peopleName.innerText = ghibliPeople[i].name;
-
-    const peopleSpecie = document.createElement("td");
-    peopleSpecie.innerText = ghibliPeople[i].species;
-
-    const peopleEye = document.createElement("td");
-    peopleEye.innerText = ghibliPeople[i].eye_color;
-
-    const peopleHair = document.createElement("td");
-    // const peopleHairColor = document.createElement("span");
-    // peopleHairColor.setAttribute("style", "background-color:");
-    peopleHair.innerText = ghibliPeople[i].hair_color;
-
-    const peopleFilm = document.createElement("td");
-    peopleFilm.innerHTML = ghibliPeople[i].my_films + "PLEASE";
-    // const filmImage = document.createElement("img");
-    // image.setAttribute("src", ghibliPeople[i].my_films);
-    // image.setAttribute("class", "card-image-top");
-    // peopleFilm.appendChild(filmImage);
-
-    tableRow.appendChild(peopleImageRow);
-    // tableRow.appendChild(peopleImage);
-    tableRow.appendChild(peopleName);
-    tableRow.appendChild(peopleSpecie);
-    tableRow.appendChild(peopleEye);
-    tableRow.appendChild(peopleHair);
-    tableRow.appendChild(peopleFilm);
-
-    // tableRow.appendChild(filmImage);
-
-    tableBody.appendChild(tableRow);
-  }
-}
 
 const getChFilms = (ghibliPeople) => {
   const chLink = "https://ghibliapi.vercel.app/films/";
@@ -96,8 +49,6 @@ const getChFilms = (ghibliPeople) => {
     .then((chFilmList) => {
       //   console.log("chFilmList", chFilmList);
 
-      //! LOOP THROUGH THE chFilmList array to access [i] Objects and access the URL
-      //! Do we want ghibliPeople[i].films == chFilmList[i][j--]
       // for (let i = 0; i < ghibliPeople.length; i++) {
       //   console.log(ghibliPeople[i]);
       // }
@@ -124,11 +75,65 @@ const getChFilms = (ghibliPeople) => {
           }
         }
         ghibliPeople[i].my_films = myFilmsAfter.toString();
+        // return myFilmsAfter;
+
         // myFilmsAfterString = myFilmsAfter.toString();
         // console.log("films After array", ghibliPeople[i].my_films);
         // console.log(ghibliPeople[0].my_films);
       }
     });
 
-  buildCharactersTable(ghibliPeople);
+  //   buildCharactersTable(ghibliPeople);
 };
+
+function buildCharactersTable(ghibliPeople) {
+  console.log("recxeived:", ghibliPeople);
+  const tableBody = document.getElementById("t-body");
+  for (let i = 0; i < ghibliPeople.length; i++) {
+    if (ghibliPeople[i].my_films != undefined) {
+      console.log(ghibliPeople[i].my_films);
+    }
+    // ROWS
+    const tableRow = document.createElement("tr");
+    //ELEMENTS
+    const peopleImageRow = document.createElement("td");
+    peopleImageRow.setAttribute("scope", "row");
+
+    const peopleImage = document.createElement("img");
+    peopleImage.setAttribute("src", ghibliPeoplePhotos[i].photo);
+    peopleImageRow.appendChild(peopleImage);
+
+    const peopleName = document.createElement("td");
+    peopleName.innerText = ghibliPeople[i].name;
+
+    const peopleSpecie = document.createElement("td");
+    peopleSpecie.innerText = ghibliPeople[i].species;
+
+    const peopleEye = document.createElement("td");
+    peopleEye.innerText = ghibliPeople[i].eye_color;
+
+    const peopleHair = document.createElement("td");
+    // const peopleHairColor = document.createElement("span");
+    // peopleHairColor.setAttribute("style", "background-color:");
+    peopleHair.innerText = ghibliPeople[i].hair_color;
+
+    const peopleFilm = document.createElement("td");
+    peopleFilm.innerText = ghibliPeople[i].my_films;
+    // const filmImage = document.createElement("img");
+    // image.setAttribute("src", ghibliPeople[i].my_films);
+    // image.setAttribute("class", "card-image-top");
+    // peopleFilm.appendChild(filmImage);
+
+    tableRow.appendChild(peopleImageRow);
+    // tableRow.appendChild(peopleImage);
+    tableRow.appendChild(peopleName);
+    tableRow.appendChild(peopleSpecie);
+    tableRow.appendChild(peopleEye);
+    tableRow.appendChild(peopleHair);
+    tableRow.appendChild(peopleFilm);
+
+    // tableRow.appendChild(filmImage);
+
+    tableBody.appendChild(tableRow);
+  }
+}
