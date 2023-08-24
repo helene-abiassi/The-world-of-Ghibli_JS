@@ -68,6 +68,7 @@ const getChFilms = (ghibliPeople) => {
         // console.log(ghibliPeople);
       }
       buildCharactersTable(ghibliPeople);
+      createChFilmDropDown(ghibliPeople);
     });
 };
 
@@ -144,4 +145,27 @@ function createRadioButtons(speciesList) {
   }
 }
 
-// createRadioButtons();
+function createChFilmDropDown(ghibliPeople) {
+  const dropdown = document.getElementById("searchDropdown");
+
+  const filmArray = ghibliPeople.map((person) => {
+    return person.my_films;
+  });
+
+  const uniqueFilmsArray = [...new Set(filmArray)];
+
+  const defaultOption = document.createElement("option");
+  defaultOption.setAttribute("selected", true);
+  defaultOption.innerText = "Search by Films...";
+
+  dropdown.appendChild(defaultOption);
+
+  uniqueFilmsArray.forEach((filmName) => {
+    // return person.my_films;
+
+    const option = document.createElement("option");
+    option.innerText = filmName;
+
+    dropdown.appendChild(option);
+  });
+}
