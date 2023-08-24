@@ -66,17 +66,43 @@ p {
 
 .sortByBox {
   background-color: #a3d9db;
+  width: 60%;
+  margin: auto;
   padding: 10px;
+  /* margin-left: 15%; */
+  /* margin-right: 25px; */
+  display: flex;
+  flex-direction: column wrap;
+  /* flex-flow: row wrap; */
+  justify-content: space-between;
+  justify-items: center;
+  border-style: groove;
+  border-color: #4ba762;
+}
+
+.sortByBoxPeople {
+  background-color: #a3d9db;
+  width: min-content;
+  margin: auto;
+  padding: 20px;
+  border-style: groove;
+  width: fit-content;
+  border-color: #4ba762;
   display: flex;
   flex-direction: column wrap;
   justify-content: space-between;
-  border-style: groove;
-  border-color: #4ba762;
-  
+
+  justify-items: center;
+}
+.radiobuttons {
+  display: flex;
+  flex-direction: row wrap;
+  align-content: space-around;
 }
 
 .btn-primary {
   background-color: #faf3be !important;
+  /* margin: auto; */
   border-color: #4ba762 !important;
   /* font-family: "Playfair Display", serif !important; */
   color: black !important;
@@ -96,7 +122,7 @@ p {
   width: 100%;
   display: flex;
   flex-direction: column wrap;
-  justify-content: center
+  /* justify-content: center; */
   /* column-gap: 5px; */
   align-items: center;
 }
@@ -202,7 +228,6 @@ h6 {
   justify-content: center;
 }
 
-
 /* LOCATION IMAGE GRID */
 
 .ImageGridRow {
@@ -243,13 +268,11 @@ h6 {
 }
 
 .gridImage {
-    /* opacity: 0.7; */
-    filter: grayscale(100%);
-  }
-  
-  .gridImage:hover {
-    opacity: 1;
-    filter: none;
-  }
+  /* opacity: 0.7; */
+  filter: grayscale(100%);
+}
 
-
+.gridImage:hover {
+  opacity: 1;
+  filter: none;
+}
