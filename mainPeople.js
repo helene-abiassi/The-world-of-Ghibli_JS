@@ -6,7 +6,6 @@ const getPeople = () => {
     })
     .then((result2) => {
       const ghibliPeople = result2;
-      // controller(ghibliPeople);
       fetchSpecies(ghibliPeople);
     });
 };
@@ -137,6 +136,19 @@ function createRadioButtons(speciesList) {
   const radioBox = document.getElementById("radioButtons");
   //   console.log(speciesList)
 
+  const defaultRadio = document.createElement("div");
+  const defaultOption = document.createElement("input");
+  defaultOption.setAttribute("type", "radio");
+  defaultOption.setAttribute("id", "defaultRadio");
+  defaultOption.setAttribute("value", "defaultRadio");
+  defaultOption.setAttribute("name", "speciesRadioButtons");
+  const defaultLabel = document.createElement("label");
+  defaultLabel.setAttribute("for", "defaultRadio");
+  defaultLabel.innerText = "\u00A0" + "All";
+
+  defaultRadio.append(defaultOption, defaultLabel);
+  radioBox.appendChild(defaultRadio);
+
   for (let i = 0; i < speciesList.length; i++) {
     const radioOptions = document.createElement("div");
     radioOptions.setAttribute("class", "form-check");
@@ -154,25 +166,13 @@ function createRadioButtons(speciesList) {
     labelOptions.setAttribute("class", "form-check-label");
     labelOptions.setAttribute("for", speciesList[i].name);
     // labelOptions.setAttribute("value", speciesList[i].name);
-    labelOptions.innerText = speciesList[i].name;
+    labelOptions.innerText = "\u00A0" + speciesList[i].name + "s";
     // labelOptions.innerText = "\u00A0" + speciesList[i].name + "s";
 
     // labelOptions.appendChild(inputOptions);
     radioBox.appendChild(inputOptions);
     radioBox.appendChild(labelOptions);
   }
-  const defaultRadio = document.createElement("div");
-  const defaultOption = document.createElement("input");
-  defaultOption.setAttribute("type", "radio");
-  defaultOption.setAttribute("id", "defaultRadio");
-  defaultOption.setAttribute("value", "defaultRadio");
-  defaultOption.setAttribute("name", "speciesRadioButtons");
-  const defaultLabel = document.createElement("label");
-  defaultLabel.setAttribute("for", "defaultRadio");
-  defaultLabel.innerText = "All";
-
-  defaultRadio.append(defaultOption, defaultLabel);
-  radioBox.appendChild(defaultRadio);
 }
 
 function createChFilmDropDown(ghibliPeople) {
