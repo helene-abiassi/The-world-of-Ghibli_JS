@@ -6,8 +6,9 @@ const getPeople = () => {
     })
     .then((result2) => {
       const ghibliPeople = result2;
-
+      // controller(ghibliPeople);
       fetchSpecies(ghibliPeople);
+      dropdownEventListeners(ghibliPeople);
 
       //   buildCharactersTable(ghibliPeople);
     });
@@ -31,12 +32,11 @@ const fetchSpecies = (ghibliPeople) => {
           }
         }
       }
+      filterEventListeners(speciesList);
       createRadioButtons(speciesList);
       getChFilms(ghibliPeople);
     });
 };
-
-getPeople();
 
 const getChFilms = (ghibliPeople) => {
   const chLink = "https://ghibliapi.vercel.app/films/";
@@ -72,8 +72,11 @@ const getChFilms = (ghibliPeople) => {
     });
 };
 
+getPeople();
+
 function buildCharactersTable(ghibliPeople) {
   const tableBody = document.getElementById("t-body");
+  tableBody.innerText = "";
   for (let i = 0; i < ghibliPeople.length; i++) {
     if (ghibliPeople[i].my_films != undefined) {
     }
@@ -114,8 +117,6 @@ function buildCharactersTable(ghibliPeople) {
   }
 }
 
-//!Function to create radio buttons
-
 function createRadioButtons(speciesList) {
   const radioBox = document.getElementById("radioButtons");
   //   console.log(speciesList);
@@ -137,7 +138,9 @@ function createRadioButtons(speciesList) {
     labelOptions.setAttribute("class", "form-check-label");
     labelOptions.setAttribute("for", "flexRadioDefault1");
     labelOptions.setAttribute("for", speciesList[i].name);
-    labelOptions.innerText = "\u00A0" + speciesList[i].name;
+    labelOptions.setAttribute("value", speciesList[i].name);
+    labelOptions.innerText = speciesList[i].name;
+    // labelOptions.innerText = "\u00A0" + speciesList[i].name + "s";
 
     // labelOptions.appendChild(inputOptions);
     radioBox.appendChild(inputOptions);
@@ -147,6 +150,8 @@ function createRadioButtons(speciesList) {
 
 function createChFilmDropDown(ghibliPeople) {
   const dropdown = document.getElementById("searchDropdown");
+  dropdown.innerText = "";
+  //! DROPDOWN RESET
 
   const filmArray = ghibliPeople.map((person) => {
     return person.my_films;
@@ -156,7 +161,11 @@ function createChFilmDropDown(ghibliPeople) {
 
   const defaultOption = document.createElement("option");
   defaultOption.setAttribute("selected", true);
+  // defaultOption.setAttribute();
+  // defaultOption.setAttribute("value", 0);
+  // defaultOption.selectedIndex = -1;
   defaultOption.innerText = "Search by Films...";
+  // defaultOption.index = 0; //!
 
   dropdown.appendChild(defaultOption);
 
@@ -169,3 +178,41 @@ function createChFilmDropDown(ghibliPeople) {
     dropdown.appendChild(option);
   });
 }
+
+const dropdownEventListeners = (ghibliPeople) => {
+  const filmSearch = document.getElementById("searchDropdown");
+  filmSearch.addEventListener("change", () => {
+    filterByDropDown(ghibliPeople);
+  });
+};
+
+const filterByDropDown = (ghibliPeople) => {
+  const filmSearch = document.getElementById("searchDropdown");
+  const filmSearchValue = filmSearch.value;
+
+  const filteredArray = ghibliPeople.filter((person) => {
+    return filmSearchValue === person.my_films;
+  });
+  buildCharactersTable(filteredArray);
+};
+
+const filterEventListeners = (speciesList) => {
+  const filterOptions = document.getElementById("radioButtons");
+  filterOptions.addEventListener("change", () => {
+    filterByFilters(speciesList);
+    // filterByFilters(ghibliPeople);
+  });
+};
+
+const filterByFilters = (speciesList) => {
+  const filterOptions = document.getElementById("radioButtons");
+  const specieValue = filterOptions.value;
+  // console.log(specieValue);
+
+  const uniqueSpecieArray = [...new Set(specieArray)];
+
+  const filteredArray = speciesList.filter((specie) => {
+    return specieValue === specie.name;
+  });
+  buildCharactersTable(filteredArray);
+};
