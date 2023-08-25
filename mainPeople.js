@@ -8,9 +8,6 @@ const getPeople = () => {
       const ghibliPeople = result2;
       // controller(ghibliPeople);
       fetchSpecies(ghibliPeople);
-      dropdownEventListeners(ghibliPeople);
-
-      //   buildCharactersTable(ghibliPeople);
     });
 };
 
@@ -32,10 +29,29 @@ const fetchSpecies = (ghibliPeople) => {
           }
         }
       }
-      filterEventListeners(speciesList);
-      createRadioButtons(speciesList);
+      // filterEventListeners(speciesList);
       getChFilms(ghibliPeople);
+
+      createRadioButtons(speciesList);
     });
+};
+
+const filterEventListeners = (ghibliPeople) => {
+  const filterOptions = document.getElementsByName("speciesRadioButtons");
+  console.log(filterOptions);
+
+  for (let i = 0; i < filterOptions.length; i++) {
+    filterOptions[i].addEventListener("change", (e) => {
+      if (e.target.value == "defaultRadio") {
+        buildCharactersTable(ghibliPeople);
+      } else {
+        const filteredArray = ghibliPeople.filter((person) => {
+          return e.target.value === person.species;
+        });
+        buildCharactersTable(filteredArray);
+      }
+    });
+  }
 };
 
 const getChFilms = (ghibliPeople) => {
@@ -67,12 +83,12 @@ const getChFilms = (ghibliPeople) => {
 
         // console.log(ghibliPeople);
       }
-      buildCharactersTable(ghibliPeople);
       createChFilmDropDown(ghibliPeople);
+      dropdownEventListeners(ghibliPeople);
+      filterEventListeners(ghibliPeople);
+      buildCharactersTable(ghibliPeople);
     });
 };
-
-getPeople();
 
 function buildCharactersTable(ghibliPeople) {
   const tableBody = document.getElementById("t-body");
@@ -80,9 +96,9 @@ function buildCharactersTable(ghibliPeople) {
   for (let i = 0; i < ghibliPeople.length; i++) {
     if (ghibliPeople[i].my_films != undefined) {
     }
-    // ROWS
+
     const tableRow = document.createElement("tr");
-    //ELEMENTS
+
     const peopleImageRow = document.createElement("td");
     peopleImageRow.setAttribute("scope", "row");
 
@@ -119,7 +135,7 @@ function buildCharactersTable(ghibliPeople) {
 
 function createRadioButtons(speciesList) {
   const radioBox = document.getElementById("radioButtons");
-  //   console.log(speciesList);
+  //   console.log(speciesList)
 
   for (let i = 0; i < speciesList.length; i++) {
     const radioOptions = document.createElement("div");
@@ -130,15 +146,14 @@ function createRadioButtons(speciesList) {
     const inputOptions = document.createElement("input");
     inputOptions.setAttribute("class", "form-check-input");
     inputOptions.setAttribute("type", "radio");
-    inputOptions.setAttribute("name", "flexRadioDefault");
-    inputOptions.setAttribute("id", "flexRadioDefault1");
+    inputOptions.setAttribute("name", "speciesRadioButtons");
+    inputOptions.setAttribute("id", speciesList[i].name);
     inputOptions.setAttribute("value", speciesList[i].name);
 
     const labelOptions = document.createElement("label");
     labelOptions.setAttribute("class", "form-check-label");
-    labelOptions.setAttribute("for", "flexRadioDefault1");
     labelOptions.setAttribute("for", speciesList[i].name);
-    labelOptions.setAttribute("value", speciesList[i].name);
+    // labelOptions.setAttribute("value", speciesList[i].name);
     labelOptions.innerText = speciesList[i].name;
     // labelOptions.innerText = "\u00A0" + speciesList[i].name + "s";
 
@@ -146,11 +161,22 @@ function createRadioButtons(speciesList) {
     radioBox.appendChild(inputOptions);
     radioBox.appendChild(labelOptions);
   }
+  const defaultRadio = document.createElement("div");
+  const defaultOption = document.createElement("input");
+  defaultOption.setAttribute("type", "radio");
+  defaultOption.setAttribute("id", "defaultRadio");
+  defaultOption.setAttribute("value", "defaultRadio");
+  defaultOption.setAttribute("name", "speciesRadioButtons");
+  const defaultLabel = document.createElement("label");
+  defaultLabel.setAttribute("for", "defaultRadio");
+  defaultLabel.innerText = "All";
+
+  defaultRadio.append(defaultOption, defaultLabel);
+  radioBox.appendChild(defaultRadio);
 }
 
 function createChFilmDropDown(ghibliPeople) {
   const dropdown = document.getElementById("searchDropdown");
-  dropdown.innerText = "";
   //! DROPDOWN RESET
 
   const filmArray = ghibliPeople.map((person) => {
@@ -161,18 +187,16 @@ function createChFilmDropDown(ghibliPeople) {
 
   const defaultOption = document.createElement("option");
   defaultOption.setAttribute("selected", true);
-  // defaultOption.setAttribute();
-  // defaultOption.setAttribute("value", 0);
-  // defaultOption.selectedIndex = -1;
+  defaultOption.setAttribute("value", "default");
   defaultOption.innerText = "Search by Films...";
-  // defaultOption.index = 0; //!
-
+  defaultOption.setAttribute("placeholder", "Search By Films...");
   dropdown.appendChild(defaultOption);
 
   uniqueFilmsArray.forEach((filmName) => {
     // return person.my_films;
 
     const option = document.createElement("option");
+    option.setAttribute("value", filmName);
     option.innerText = filmName;
 
     dropdown.appendChild(option);
@@ -181,38 +205,26 @@ function createChFilmDropDown(ghibliPeople) {
 
 const dropdownEventListeners = (ghibliPeople) => {
   const filmSearch = document.getElementById("searchDropdown");
-  filmSearch.addEventListener("change", () => {
+
+  filmSearch.addEventListener("change", (e) => {
+    console.log(e.target.value);
     filterByDropDown(ghibliPeople);
   });
 };
 
 const filterByDropDown = (ghibliPeople) => {
   const filmSearch = document.getElementById("searchDropdown");
-  const filmSearchValue = filmSearch.value;
+  const defaultOption = "Search by Films...";
+  let filmSearchValue = filmSearch.value;
 
-  const filteredArray = ghibliPeople.filter((person) => {
-    return filmSearchValue === person.my_films;
-  });
-  buildCharactersTable(filteredArray);
+  if (filmSearchValue === "default") {
+    buildCharactersTable(ghibliPeople);
+  } else {
+    const filteredArray = ghibliPeople.filter((person) => {
+      return filmSearchValue === person.my_films;
+    });
+    buildCharactersTable(filteredArray);
+  }
 };
 
-const filterEventListeners = (speciesList) => {
-  const filterOptions = document.getElementById("radioButtons");
-  filterOptions.addEventListener("change", () => {
-    filterByFilters(speciesList);
-    // filterByFilters(ghibliPeople);
-  });
-};
-
-const filterByFilters = (speciesList) => {
-  const filterOptions = document.getElementById("radioButtons");
-  const specieValue = filterOptions.value;
-  // console.log(specieValue);
-
-  const uniqueSpecieArray = [...new Set(specieArray)];
-
-  const filteredArray = speciesList.filter((specie) => {
-    return specieValue === specie.name;
-  });
-  buildCharactersTable(filteredArray);
-};
+getPeople();
