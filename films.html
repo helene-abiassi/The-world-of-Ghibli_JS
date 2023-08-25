@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <title>The Films of Studio Ghibli</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
   </head>
   <body>
     <div>
@@ -44,7 +45,7 @@
     <header>
       <img
         class="logo-icon"
-        src="./icons/studio-ghibli-logo.svg"
+        src="./icons/favicon.svg"
         alt="Studio Ghibli logo"
       />
       <embed
@@ -60,6 +61,7 @@
       <div class="sortByBox">
         <select
           class="form-select"
+          id="filmSortBy"
           style="
             width: min-content;
             margin-left: 55px;
@@ -69,14 +71,13 @@
           aria-label="Default select example"
         >
           <option selected>Sort By...</option>
-          <option value="1">A to Z</option>
-          <option value="2">Release Year</option>
-          <option value="3">Director</option>
-          <option value="3">Rating</option>
+          <option value="A to Z">A to Z</option>
+          <option value="Release Year">Release Year</option>
+          <option value="Running Time">Running Time</option>
+          <option value="Rating">Rating</option>
         </select>
 
         <button
-          onclick="shuffleList"
           class="btn btn-primary"
           type="submit"
           style="
@@ -84,6 +85,7 @@
             margin-top: 10px;
             margin-bottom: 10px;
             margin-right: 10px;
+            opacity: 0%;
           "
         >
           Shuffle!
@@ -128,6 +130,6 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script src="main.js"></script>
+    <script src="mainFilm.js"></script>
   </body>
 </html>
