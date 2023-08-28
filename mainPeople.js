@@ -82,16 +82,17 @@ const getChFilms = (ghibliPeople) => {
 
         // console.log(ghibliPeople);
       }
+      buildCharactersTable(ghibliPeople);
       createChFilmDropDown(ghibliPeople);
       dropdownEventListeners(ghibliPeople);
       filterEventListeners(ghibliPeople);
-      buildCharactersTable(ghibliPeople);
     });
 };
 
 function buildCharactersTable(ghibliPeople) {
   const tableBody = document.getElementById("t-body");
   tableBody.innerText = "";
+
   for (let i = 0; i < ghibliPeople.length; i++) {
     if (ghibliPeople[i].my_films != undefined) {
     }
@@ -138,10 +139,12 @@ function createRadioButtons(speciesList) {
 
   const defaultRadio = document.createElement("div");
   const defaultOption = document.createElement("input");
+  defaultOption.setAttribute("class", "form-check-input");
   defaultOption.setAttribute("type", "radio");
   defaultOption.setAttribute("id", "defaultRadio");
   defaultOption.setAttribute("value", "defaultRadio");
   defaultOption.setAttribute("name", "speciesRadioButtons");
+
   const defaultLabel = document.createElement("label");
   defaultLabel.setAttribute("for", "defaultRadio");
   defaultLabel.innerText = "\u00A0" + "All";
@@ -177,7 +180,6 @@ function createRadioButtons(speciesList) {
 
 function createChFilmDropDown(ghibliPeople) {
   const dropdown = document.getElementById("searchDropdown");
-  //! DROPDOWN RESET
 
   const filmArray = ghibliPeople.map((person) => {
     return person.my_films;
@@ -193,8 +195,6 @@ function createChFilmDropDown(ghibliPeople) {
   dropdown.appendChild(defaultOption);
 
   uniqueFilmsArray.forEach((filmName) => {
-    // return person.my_films;
-
     const option = document.createElement("option");
     option.setAttribute("value", filmName);
     option.innerText = filmName;
