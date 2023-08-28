@@ -70,7 +70,7 @@
           "
           aria-label="Default select example"
         >
-          <option selected>Sort By...</option>
+          <option selected value="default">Sort By...</option>
           <option value="A to Z">A to Z</option>
           <option value="Release Year">Release Year</option>
           <option value="Running Time">Running Time</option>
@@ -79,14 +79,15 @@
 
         <button
           class="btn btn-primary"
+          id="shuffleFilmButton"
           type="submit"
           style="
             height: fit-content;
             margin-top: 10px;
             margin-bottom: 10px;
             margin-right: 10px;
-            opacity: 0%;
           "
+          value="Shuffle"
         >
           Shuffle!
         </button>
@@ -95,7 +96,7 @@
           <input
             class="form-control me-2"
             type="search"
-            placeholder="Don't search..."
+            placeholder="Don't even search..."
             aria-label="Search"
             style="height: min-content; margin-top: 10px; margin-bottom: 10px"
           />
