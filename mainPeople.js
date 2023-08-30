@@ -30,14 +30,13 @@ const fetchSpecies = (ghibliPeople) => {
       }
       // filterEventListeners(speciesList);
       getChFilms(ghibliPeople);
-
       createRadioButtons(speciesList);
     });
 };
 
 const filterEventListeners = (ghibliPeople) => {
   const filterOptions = document.getElementsByName("speciesRadioButtons");
-  console.log(filterOptions);
+  // console.log(filterOptions);
 
   for (let i = 0; i < filterOptions.length; i++) {
     filterOptions[i].addEventListener("change", (e) => {
@@ -103,7 +102,11 @@ function buildCharactersTable(ghibliPeople) {
     peopleImageRow.setAttribute("scope", "row");
 
     const peopleImage = document.createElement("img");
-    peopleImage.setAttribute("src", ghibliPeoplePhotos[i].photo);
+    peopleImageID = "./filmImages/" + ghibliPeople[i].id + ".png";
+
+    // peopleImageSource = ghibliPeoplePhotos[i].photo;
+
+    peopleImage.setAttribute("src", peopleImageID);
     peopleImageRow.appendChild(peopleImage);
 
     const peopleName = document.createElement("td");
@@ -214,7 +217,7 @@ const dropdownEventListeners = (ghibliPeople) => {
 
 const filterByDropDown = (ghibliPeople) => {
   const filmSearch = document.getElementById("searchDropdown");
-  const defaultOption = "Search by Films...";
+
   let filmSearchValue = filmSearch.value;
 
   if (filmSearchValue === "default") {
@@ -225,6 +228,19 @@ const filterByDropDown = (ghibliPeople) => {
     });
     buildCharactersTable(filteredArray);
   }
+};
+
+const combinedFilters = (e) => {
+  const filmSearch = document.getElementById("searchDropdown").value;
+  const filterOptions = document.getElementById("speciesRadioButtons").value;
+
+  const filteredSearch = ghibliPeople.filter((item) => {
+    const matchesFilm = filmSearch === "Search by Films..." || item[filmSearch];
+    const matchesSpecie =
+      filterOptions === "All" || item.specie === specieSelection;
+    return matchesFilm && matchesSpecie;
+  });
+  buildCharactersTable(filteredSearch);
 };
 
 getPeople();
