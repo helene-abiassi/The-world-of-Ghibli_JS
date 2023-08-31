@@ -9,21 +9,17 @@ const getFilms = () => {
       postFilmCards(ghibliFilms);
       sortEventListeners(ghibliFilms);
       shuffleEventListener(ghibliFilms);
-      // return ghibliFilms;
     });
 };
 
 function postFilmCards(ghibliFilms) {
   const cardsContainer = document.getElementById("cards-container");
   cardsContainer.innerHTML = "";
-  const modalDiv = document.createElement("div");
-
-  modalDiv.innerHTML = "";
 
   for (let i = 0; i < ghibliFilms.length; i++) {
     const cardDiv = document.createElement("div");
     cardDiv.setAttribute("class", "card col-sm-12 col-md-6 col-lg-3");
-    cardDiv.innerHTML = "";
+    // cardDiv.innerHTML = "";
 
     const image = document.createElement("img");
     image.setAttribute("src", ghibliFilms[i].image);
@@ -60,31 +56,26 @@ function postFilmCards(ghibliFilms) {
     const button = document.createElement("button");
     button.setAttribute("type", "button");
     button.setAttribute("class", "btn btn-primary");
-    button.setAttribute("id", ghibliFilms[i].id);
-    button.setAttribute("data-bs-toggle", "modal");
-    button.setAttribute("data-bs-target", "#exampleModal");
 
+    button.setAttribute("data-bs-toggle", "modal");
+    button.setAttribute("data-bs-target", "#exampleModal" + i);
     button.innerText = "Discover more";
 
-    for (let j = 0; j < ghibliFilms.length; j++) {}
-
     // MODAL TRIGGER
-    // const modalDiv = document.createElement("div");
+    const modalDiv = document.createElement("div");
+
     modalDiv.setAttribute("class", "modal fade");
-    modalDiv.setAttribute("id", "exampleModal");
+    modalDiv.setAttribute("id", "exampleModal" + i);
     modalDiv.setAttribute("tabindex", "-1");
     modalDiv.setAttribute("aria-labelledby", "exampleModalLabel");
     modalDiv.setAttribute("aria-hidden", "true");
-    // modalDiv.innerHTML = ``;
 
     const modalDialog = document.createElement("div");
     modalDialog.setAttribute("class", "modal-dialog");
-    modalDialog.setAttribute("id", "myModal");
 
     const modalContent = document.createElement("div");
     modalContent.setAttribute("class", "modal-content card");
     modalContent.setAttribute("id", "modal-content");
-    // modalContent.innerHTML = "";
 
     modalDialog.appendChild(modalContent);
 
@@ -99,9 +90,8 @@ function postFilmCards(ghibliFilms) {
     modalH1.innerText = ghibliFilms[i].title;
     const br = document.createElement("br");
 
-    const modalH1Jap = document.createElement("h2");
+    const modalH1Jap = document.createElement("h1");
     modalH1Jap.setAttribute("class", "modal-title fs-5");
-    modalH1Jap.setAttribute("id", "exampleModalLabel");
     modalH1Jap.innerText = ghibliFilms[i].original_title + "\u00A0";
 
     const modalButton = document.createElement("button");
@@ -130,7 +120,6 @@ function postFilmCards(ghibliFilms) {
       "width: 100%; border-color: #4ba762; border-style: solid; padding: 0px"
     );
     modalBanner.setAttribute("alt", ghibliFilms[i].id);
-    modalBanner.innerHTML = "";
 
     const modalDirector = document.createElement("h6");
     modalDirector.setAttribute("style", "padding-top: 10px");
