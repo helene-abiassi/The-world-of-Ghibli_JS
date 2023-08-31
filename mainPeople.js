@@ -230,17 +230,18 @@ const filterByDropDown = (ghibliPeople) => {
   }
 };
 
-const combinedFilters = (e) => {
-  const filmSearch = document.getElementById("searchDropdown").value;
-  const filterOptions = document.getElementById("speciesRadioButtons").value;
+// const combinedFilters = (e) => {
+//   const filmSearch = document.getElementById("searchDropdown").value;
+//   const filterOptions = document.getElementById("speciesRadioButtons").value;
 
-  const filteredSearch = ghibliPeople.filter((item) => {
-    const matchesFilm = filmSearch === "Search by Films..." || item[filmSearch];
-    const matchesSpecie =
-      filterOptions === "All" || item.specie === specieSelection;
-    return matchesFilm && matchesSpecie;
-  });
-  buildCharactersTable(filteredSearch);
-};
-
+//   const filteredSearch = ghibliPeople.filter((item) => {
+//     const matchesFilm = filmSearch === "Search by Films..." || item[filmSearch];
+//     const matchesSpecie =
+//       filterOptions === "All" || item.specie === specieSelection;
+//     return matchesFilm && matchesSpecie;
+//   });
+//   console.log(filteredSearch);
+//   buildCharactersTable(filteredSearch);
+// };
+// combinedFilters(filteredSearch);
 getPeople();
