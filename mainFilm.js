@@ -6,10 +6,12 @@ const getFilms = () => {
     })
     .then((result) => {
       const ghibliFilms = result;
+      // REVIEW it is a good idea to give a more understandable name to what we get from the API, but we don't need to create an extra variable. you could just do .then((ghibliFilms)) . We can name the argument of every callaback inside the .then() the way we want.
       postFilmCards(ghibliFilms);
       sortEventListeners(ghibliFilms);
       shuffleEventListener(ghibliFilms);
     });
+  // REVIEW Do not forget to include a .catch() block to take account of some type of errors, and be able to handle them
 };
 
 function postFilmCards(ghibliFilms) {
@@ -62,6 +64,11 @@ function postFilmCards(ghibliFilms) {
     button.innerText = "Discover more";
 
     // MODAL TRIGGER
+
+    // REVIEW by doing all the DOM manipulation for the Modal, inside the for...loop , what you do is to create already all the modals, and have them waiting to be displayed when you click the button.
+    //If you inspect your page, you will see that the modal is already created, with the image and all, but with a property "hidden=true" (in this case "aria-hidden=true").
+    //It would be more efficient if our browser, instead of having to create 50 modals (or whatever number ), we create just one, the one we need, when we click on the button
+    //For that, we could create a function that has all the code to generate the modal, that receives the information that the modal shoudl contain, that is triggered when we click the button.
     const modalDiv = document.createElement("div");
 
     modalDiv.setAttribute("class", "modal fade");
