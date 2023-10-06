@@ -15,4 +15,4 @@ Programs used:
 - Bootstrap
 
 API can be found here: https://ghibliapi.vercel.app/
-Live preview of the site can be found here: [Add link]
+Live preview of the site can be found here: https://studio-ghibli-heleneapi-project.netlify.app/people
