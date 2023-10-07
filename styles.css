@@ -100,11 +100,10 @@ p {
 
 .body-container .sortByBoxPeople {
   display: flex;
-  border: #242156 5px solid;
   flex-wrap: wrap;
-  float: left;
   overflow: hidden;
 }
+
 
 .radiobuttons {
   display: flex;
