@@ -15,6 +15,7 @@
   <li>Javascript</li>
   <li>Postman</li>
   <li>Bootstrap</li>
+    <li>REST API</li>
 </ul>
 
 <h3>Deployed on Netlify:</h3>
