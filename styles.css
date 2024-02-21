@@ -1,16 +1,15 @@
 .body-container {
   background-color: #f2e470;
   margin-left: 5%;
-  /* margin-top: 15px; */
   height: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 0.9375rem;
+  padding-bottom: 0.9375rem;
 }
 
 .container-fluid {
   background-color: #4ba762;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
 }
 
 .navbar-brand {
@@ -57,7 +56,7 @@ footer {
   align-content: center;
   width: 100%;
   height: 100%;
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 
 p {
@@ -69,9 +68,7 @@ p {
   background-color: #a3d9db;
   width: 60%;
   margin: auto;
-  padding: 10px;
-  /* margin-left: 15%; */
-  /* margin-right: 25px; */
+  padding: 0.625rem;
   display: flex;
   flex-direction: column wrap;
   flex-flow: row wrap;
@@ -79,15 +76,13 @@ p {
   justify-items: center;
   border-color: #4ba762;
   border-style: solid;
-  /* border-width: 3px; */
-  /* border-color: ; */
 }
 
 .sortByBoxPeople {
   background-color: #a3d9db;
   width: min-content;
   margin: auto;
-  padding: 20px;
+  padding: 1.25rem;
   border-style: solid;
   width: fit-content;
   border-color: #4ba762;
@@ -110,41 +105,35 @@ p {
   flex-direction: row wrap;
   justify-content: center;
   align-items: center;
-  padding-bottom: 15px;
-  margin-top: 15px;
-  padding-top: 10 px;
-  /* border-bottom: #4ba762 3px groove; */
+  padding-bottom: 0.9375rem;
+  margin-top: 0.9375rem;
+  padding-top: 0.625rem;
 }
 
 .btn-primary {
   background-color: #faf3be !important;
-  /* margin: auto; */
   border-color: #4ba762 !important;
-  /* font-family: "Playfair Display", serif !important; */
   color: black !important;
 }
 
 .container {
-  padding: 10px;
+  padding: 0.625rem;
 }
 
 .card {
   background-color: #a3d9db !important;
-  margin-bottom: 15px;
-  /* height: 10% !important; */
+  margin-bottom: 0.9375rem;
 }
 
 .row {
   width: 100%;
   display: flex;
   flex-direction: column wrap;
-  /* justify-content: center; */
-  /* column-gap: 5px; */
   align-items: center;
 }
 
 .hero-title {
-  text-shadow: 2px 2px black;
+  text-shadow: 0.125rem 0.125rem black;
   text-align: center;
   position: relative;
 }
@@ -182,7 +171,7 @@ p {
 h6 {
   text-align: left !important;
   font-size: 10pt !important;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
 }
 
 /* HOME PAGE  */
@@ -190,8 +179,8 @@ h6 {
 .hcontainer {
   position: relative;
   /* width: 50%; */
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 0.9375rem;
+  margin-right: 0.9375rem;
   background-color: #242156;
   border-radius: 10%;
 }
@@ -227,8 +216,7 @@ h6 {
 .htext {
   background-color: #a3d9db;
   color: black;
-  font-size: 16px;
-  /* padding: 16px 32px; */
+  font-size: 1rem;
   border-radius: 10%;
 }
 
@@ -239,25 +227,24 @@ h6 {
   justify-content: space-around;
 }
 
-/* LOCATION IMAGE GRID */
 
 .ImageGridRow {
-  display: -ms-flexbox; /* IE10 */
+  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
+  -ms-flex-wrap: wrap; 
   flex-wrap: wrap;
-  padding: 0 4px;
+  padding: 0 0.25rem;
 }
 
 .ImageGridColumn {
-  -ms-flex: 25%; /* IE10 */
+  -ms-flex: 25%; 
   flex: 25%;
   max-width: 25%;
-  padding: 0 4px;
+  padding: 0 0.25rem;
 }
 
 .ImageGridColumn img {
-  margin-top: 8px;
+  margin-top: 0.5rem;
   vertical-align: middle;
   width: 100%;
 }
@@ -301,7 +288,6 @@ h6 {
     display: flex;
     flex: 100%;
     flex-direction: column;
-    /* align-items: center; */
   }
 }
 
